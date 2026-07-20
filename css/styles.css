@@ -16,7 +16,7 @@
   --color-accent-shadow: rgba(230, 50, 50, .4);
   --color-text:          #F5F1EA;
   --color-text-muted:    #8a8a8a;
-  --color-text-tab:      #7a7a7a;
+  --color-text-tab:      #909090;
   --color-white:         #ffffff;
 
   /* Tipografía */
@@ -106,4 +106,18 @@ button {
 /* Header sticky: sombra al quedar fijo arriba (la alterna js/main.js) */
 .is-stuck {
   box-shadow: 0 8px 20px rgba(0, 0, 0, .5);
+}
+
+/* ============================================================
+   Pantallas anchas (tablet / desktop)
+   El menú es un marco tipo móvil (max-width 440px) centrado. En
+   pantallas más anchas lo destacamos con un anillo + sombra para
+   que se lea como algo intencional y no como una tira flotando.
+   En móvil no cambia nada.
+   ============================================================ */
+
+@media (min-width: 500px) {
+  .app {
+    box-shadow: 0 0 0 1px var(--color-border), 0 30px 80px rgba(0, 0, 0, .6);
+  }
 }
