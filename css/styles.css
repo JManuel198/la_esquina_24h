@@ -75,3 +75,35 @@ button {
   border: none;
   background: none;
 }
+
+/* ============================================================
+   Animaciones de aparición al hacer scroll (las activa js/main.js)
+   La clase .reveal solo la añade el JS, así que sin JS nada queda
+   oculto. Fade-in + leve desplazamiento hacia arriba.
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Header sticky: sombra al quedar fijo arriba (la alterna js/main.js) */
+.is-stuck {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .5);
+}
