@@ -77,6 +77,21 @@ button {
 }
 
 /* ============================================================
+   Utilidades
+   ============================================================ */
+
+/* Oculta la barra de scroll visual sin desactivar el scroll (el
+   swipe/arrastre sigue funcionando). Se aplica a contenedores con
+   overflow, como el carrusel de tabs. */
+.scroll-sin-barra {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* Edge / IE */
+}
+.scroll-sin-barra::-webkit-scrollbar {
+  display: none;                /* Chrome / Safari / navegadores móviles */
+}
+
+/* ============================================================
    Animaciones de aparición al hacer scroll (las activa js/main.js)
    La clase .reveal solo la añade el JS, así que sin JS nada queda
    oculto. Fade-in + leve desplazamiento hacia arriba.
