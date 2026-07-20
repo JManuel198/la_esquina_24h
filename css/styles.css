@@ -210,3 +210,50 @@ button {
   margin: 0 2px;
   background: var(--color-border);
 }
+
+/* ============================================================
+   Botón flotante de contacto por WhatsApp
+   Igual en las 3 variaciones: círculo rojo fijo en la esquina
+   inferior derecha, anclado al ancho del marco (como el switcher).
+   Reemplaza los botones "Pedir por WhatsApp" de cada diseño.
+   ============================================================ */
+
+.wa-fab {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: var(--space-lg);
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* solo el botón recibe eventos */
+}
+
+.wa-fab__band {
+  width: 100%;
+  max-width: var(--page-max-width);
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wa-fab__btn {
+  pointer-events: auto;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-btn);
+  text-decoration: none;
+}
+
+.wa-fab__btn svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  fill: currentColor;
+}
