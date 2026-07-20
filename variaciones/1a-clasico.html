@@ -254,24 +254,57 @@
       text-decoration: none;
     }
 
-    /* ---- Footer con datos del negocio y QR ---- */
-    .footer {
-      padding: var(--space-xl) var(--space-lg) var(--space-2xl);
-      border-top: 1px solid var(--color-border-soft);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .footer__qr {
-      width: 64px;
-      height: 64px;
-      border-radius: 8px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .footer__info {
+    /* ---- Ubicación y horarios ---- */
+    .location {
+      padding: var(--space-xl) var(--space-lg) var(--space-md);
       display: flex;
       flex-direction: column;
+      gap: var(--space-md);
+    }
+    .location__title {
+      font-family: var(--font-display);
+      color: var(--color-text);
+      font-size: 20px;
+      letter-spacing: .01em;
+      line-height: 1;
+    }
+    .location__map {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 170px;
+      border: 1px solid var(--color-border);
+    }
+    .location__map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .location__details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .location__address {
+      color: var(--color-text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .location__hours {
+      color: var(--color-text);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ---- Footer simple ---- */
+    .footer {
+      padding: var(--space-md) var(--space-lg) var(--space-2xl);
+      border-top: 1px solid var(--color-border-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       gap: var(--space-xs);
     }
     .footer__name {
@@ -279,19 +312,11 @@
       color: var(--color-text);
       font-size: 16px;
       letter-spacing: .01em;
-      line-height: 1;
     }
-    .footer__line {
+    .footer__copy {
       color: var(--color-text-muted);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 500;
-      line-height: 1.4;
-    }
-    .footer__hours {
-      color: var(--color-text);
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.4;
     }
   </style>
 </head>
@@ -353,14 +378,28 @@
       <a class="whatsapp-btn" href="#">Pedir por WhatsApp</a>
     </div>
 
-    <!-- Footer con datos del negocio y QR -->
-    <footer class="footer">
-      <img class="footer__qr" src="https://placehold.co/64x64/F5F1EA/121212?text=QR" alt="Código QR para abrir este menú desde tu teléfono">
-      <div class="footer__info">
-        <div class="footer__name">LA ESQUINA 24H</div>
-        <div class="footer__line">Av. Principal, [sector], [ciudad]</div>
-        <div class="footer__hours">Lun–Dom · 6:00pm – 4:00am</div>
+    <!-- Ubicación y horarios -->
+    <section class="location" aria-label="Ubicación y horarios">
+      <h2 class="location__title">Ubicación y horarios</h2>
+      <!-- Reemplazar el src por el enlace real de Google Maps (Compartir → Insertar un mapa) -->
+      <div class="location__map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDcnNTkuNSJX!5e0!3m2!1ses!2smx!4v1700000000000"
+          title="Mapa de ubicación de La Esquina 24H"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
       </div>
+      <div class="location__details">
+        <div class="location__address">Av. Principal, [sector], [ciudad]</div>
+        <div class="location__hours">Lun–Dom · 6:00pm – 4:00am</div>
+      </div>
+    </section>
+
+    <!-- Footer simple -->
+    <footer class="footer">
+      <div class="footer__name">LA ESQUINA 24H</div>
+      <div class="footer__copy">© 2026 La Esquina 24H — Todos los derechos reservados</div>
     </footer>
 
   </div>
