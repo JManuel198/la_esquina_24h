@@ -140,7 +140,7 @@
     /* ---- Aviso de oferta ---- */
     .offer {
       background: var(--color-bg-card);
-      border: 1px solid #2a2a2a;
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       margin: 2px var(--space-lg) var(--space-md);
       padding: 10px var(--space-md);
@@ -149,7 +149,7 @@
       gap: 10px;
     }
     .offer__tag {
-      background: #2a2a2a;
+      background: var(--color-border);
       color: var(--color-accent);
       font-weight: 800;
       font-size: 9px;
@@ -247,26 +247,48 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 24px rgba(230, 50, 50, .5);
+      box-shadow: var(--shadow-btn);
       font-size: 26px;
       text-decoration: none;
     }
 
-    /* ---- Footer con QR ---- */
+    /* ---- Footer con datos del negocio y QR ---- */
     .footer {
       padding: var(--space-lg);
       border-top: 1px solid var(--color-border-soft);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: var(--space-md);
     }
-    .footer__text {
+    .footer__info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+    .footer__name {
+      font-family: var(--font-display);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1;
+    }
+    .footer__line {
       color: var(--color-text-muted);
       font-size: 10.5px;
       font-weight: 500;
-      max-width: 230px;
       line-height: 1.4;
+    }
+    .footer__hours {
+      align-self: flex-start;
+      margin-top: 2px;
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
     }
     .footer__qr {
       width: 52px;
@@ -279,6 +301,19 @@
 </head>
 <body>
   <div class="app">
+
+    <!-- Switcher de variaciones (previsualización) -->
+    <nav class="switcher" aria-label="Cambiar de variación de menú">
+      <div class="switcher__band">
+        <div class="switcher__bar">
+          <a class="switcher__btn switcher__btn--home" href="../index.html">Inicio</a>
+          <span class="switcher__sep" aria-hidden="true"></span>
+          <a class="switcher__btn" href="1a-clasico.html">1a</a>
+          <a class="switcher__btn is-active" href="1b-bento.html" aria-current="page">1b</a>
+          <a class="switcher__btn" href="1c-urbano.html">1c</a>
+        </div>
+      </div>
+    </nav>
 
     <!-- Hero con imagen, logo y badge "Abierto" -->
     <header class="hero">
@@ -317,9 +352,13 @@
       <a class="fab__btn" href="#" aria-label="Pedir por WhatsApp">☏</a>
     </div>
 
-    <!-- Footer con QR -->
+    <!-- Footer con datos del negocio y QR -->
     <footer class="footer">
-      <div class="footer__text">Escanea para ver el menú de tu mesa</div>
+      <div class="footer__info">
+        <div class="footer__name">LA ESQUINA 24H</div>
+        <div class="footer__line">Av. Principal, [sector], [ciudad]</div>
+        <span class="footer__hours">Lun–Dom · 6:00pm – 4:00am</span>
+      </div>
       <img class="footer__qr" src="https://placehold.co/52x52/F5F1EA/121212?text=QR" alt="Código QR para abrir este menú desde tu teléfono">
     </footer>
 

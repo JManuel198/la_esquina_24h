@@ -173,7 +173,7 @@
     .product {
       display: flex;
       gap: var(--space-md);
-      background: #191919;
+      background: var(--color-bg-elevated);
       border-left: 3px solid var(--color-accent);
       padding: 10px 10px 10px 12px;
       align-items: center;
@@ -243,7 +243,7 @@
       text-decoration: none;
     }
 
-    /* ---- Footer con QR ---- */
+    /* ---- Footer con datos del negocio y QR ---- */
     .footer {
       padding: 18px var(--space-lg) 26px;
       border-top: 2px solid var(--color-accent);
@@ -259,17 +259,49 @@
       flex-shrink: 0;
       border: 2px solid var(--color-accent);
     }
-    .footer__text {
+    .footer__info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .footer__name {
+      font-family: var(--font-display);
+      color: var(--color-text);
+      font-size: 18px;
+      letter-spacing: .02em;
+      line-height: .95;
+    }
+    .footer__line {
       color: var(--color-text-muted);
       font-size: 10.5px;
       font-weight: 600;
       line-height: 1.4;
       text-transform: uppercase;
     }
+    .footer__hours {
+      color: var(--color-accent);
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
   <div class="app">
+
+    <!-- Switcher de variaciones (previsualización); bajado para no tapar el ticker -->
+    <nav class="switcher" aria-label="Cambiar de variación de menú">
+      <div class="switcher__band">
+        <div class="switcher__bar">
+          <a class="switcher__btn switcher__btn--home" href="../index.html">Inicio</a>
+          <span class="switcher__sep" aria-hidden="true"></span>
+          <a class="switcher__btn" href="1a-clasico.html">1a</a>
+          <a class="switcher__btn" href="1b-bento.html">1b</a>
+          <a class="switcher__btn is-active" href="1c-urbano.html" aria-current="page">1c</a>
+        </div>
+      </div>
+    </nav>
 
     <!-- Ticker animado de texto -->
     <div class="ticker">
@@ -310,10 +342,14 @@
       <a class="whatsapp-btn" href="#">PEDIR POR WHATSAPP →</a>
     </div>
 
-    <!-- Footer con QR -->
+    <!-- Footer con datos del negocio y QR -->
     <footer class="footer">
       <img class="footer__qr" src="https://placehold.co/60x60/F5F1EA/121212?text=QR" alt="Código QR para abrir este menú desde tu teléfono">
-      <div class="footer__text">Escanea el QR<br>de tu mesa</div>
+      <div class="footer__info">
+        <div class="footer__name">LA ESQUINA 24H</div>
+        <div class="footer__line">Av. Principal, [sector], [ciudad]</div>
+        <div class="footer__hours">Lun–Dom · 6:00pm – 4:00am</div>
+      </div>
     </footer>
 
   </div>

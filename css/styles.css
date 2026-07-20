@@ -121,3 +121,77 @@ button {
     box-shadow: 0 0 0 1px var(--color-border), 0 30px 80px rgba(0, 0, 0, .6);
   }
 }
+
+/* ============================================================
+   Switcher de variaciones (herramienta de previsualización)
+   Píldora fija y discreta en la esquina inferior derecha, justo
+   encima del CTA, para saltar entre 1a / 1b / 1c y volver a la
+   portada sin pisar la marca ni el botón de cada diseño. Anclada
+   al ancho del marco para que en escritorio quede pegada a él.
+   Cada página marca su botón activo con .is-active.
+   ============================================================ */
+
+.switcher {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* deja pasar el toque salvo en la barra */
+}
+
+.switcher__band {
+  width: 100%;
+  max-width: var(--page-max-width);
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.switcher__bar {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  background: rgba(10, 10, 10, .82);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .45);
+}
+
+.switcher__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.switcher__btn--home {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.switcher__btn.is-active {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.switcher__sep {
+  width: 1px;
+  height: 16px;
+  margin: 0 2px;
+  background: var(--color-border);
+}

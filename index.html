@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Esquina 24H — Elige el estilo de tu menú</title>
+
+  <!-- Tipografías: Anton para títulos, Inter para el resto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Variables de diseño compartidas -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* ====== Portada de selección de variaciones ====== */
+
+    body {
+      background: var(--color-bg);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .landing {
+      width: 100%;
+      max-width: 960px;
+      padding: 48px var(--space-lg) 56px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Encabezado con marca ---- */
+    .landing__head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-md);
+      margin-bottom: 8px;
+    }
+    .landing__logo {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      color: var(--color-white);
+      font-size: 24px;
+      box-shadow: var(--shadow-btn);
+    }
+    .landing__name {
+      font-family: var(--font-display);
+      color: var(--color-text);
+      font-size: 32px;
+      letter-spacing: .01em;
+      line-height: 1;
+    }
+    .landing__intro {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+      max-width: 30ch;
+    }
+
+    /* ---- Tarjetas de variación ---- */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      margin-top: 32px;
+    }
+    .card {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card__label {
+      align-self: flex-start;
+      background: var(--color-surface);
+      color: var(--color-text-muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: var(--radius-sm);
+    }
+    .card__name {
+      font-family: var(--font-display);
+      color: var(--color-text);
+      font-size: 24px;
+      line-height: 1;
+    }
+    .card__desc {
+      color: var(--color-text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .card__btn {
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-weight: 800;
+      font-size: 14px;
+      text-align: center;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-btn);
+      text-decoration: none;
+    }
+
+    /* ---- Pie discreto ---- */
+    .landing__foot {
+      margin-top: 36px;
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* ---- Pantallas anchas: tarjetas en fila ---- */
+    @media (min-width: 720px) {
+      .landing {
+        padding-top: 64px;
+      }
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="landing">
+
+    <!-- Encabezado con marca -->
+    <header class="landing__head">
+      <div class="landing__logo">LE</div>
+      <h1 class="landing__name">LA ESQUINA 24H</h1>
+      <p class="landing__intro">Elige el estilo que más te guste para tu menú digital</p>
+    </header>
+
+    <!-- Tarjetas: una por variación -->
+    <div class="cards">
+
+      <article class="card">
+        <span class="card__label">1a</span>
+        <h2 class="card__name">Clásico</h2>
+        <p class="card__desc">Lista vertical con foto, header fijo y tabs subrayadas. Sobrio y directo.</p>
+        <a class="card__btn" href="variaciones/1a-clasico.html">Ver menú →</a>
+      </article>
+
+      <article class="card">
+        <span class="card__label">1b</span>
+        <h2 class="card__name">Bento / Grid</h2>
+        <p class="card__desc">Portada grande y productos en cuadrícula de dos columnas. Más visual.</p>
+        <a class="card__btn" href="variaciones/1b-bento.html">Ver menú →</a>
+      </article>
+
+      <article class="card">
+        <span class="card__label">1c</span>
+        <h2 class="card__name">Urbano</h2>
+        <p class="card__desc">Cinta animada, tipografía marcada y bordes duros. El más llamativo.</p>
+        <a class="card__btn" href="variaciones/1c-urbano.html">Ver menú →</a>
+      </article>
+
+    </div>
+
+    <p class="landing__foot">Abierto hasta el amanecer · Lun–Dom · 6:00pm – 4:00am</p>
+
+  </main>
+</body>
+</html>
