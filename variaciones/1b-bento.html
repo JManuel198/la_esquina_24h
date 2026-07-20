@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Esquina 24H — Menú (1b Bento / Grid)</title>
+
+  <!-- Tipografías: Anton para títulos, Inter para el resto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Variables de diseño compartidas -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ====== Layout de la variación 1b (Bento / Grid) ====== */
+
+    body {
+      display: flex;
+      justify-content: center;
+      background: #0a0a0a;
+    }
+
+    .app {
+      width: 100%;
+      max-width: var(--page-max-width);
+      min-height: 100vh;
+      background: var(--color-bg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ---- Hero con imagen, logo y badge "Abierto" ---- */
+    .hero {
+      position: relative;
+      height: 210px;
+      flex-shrink: 0;
+    }
+    .hero__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(18,18,18,.2) 55%, var(--color-bg) 100%);
+      pointer-events: none;
+    }
+    .hero__brand {
+      position: absolute;
+      top: var(--space-lg);
+      left: var(--space-lg);
+      right: var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero__logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      color: var(--color-white);
+      font-size: 17px;
+    }
+    .hero__name {
+      font-family: var(--font-display);
+      color: var(--color-white);
+      font-size: 18px;
+    }
+    .hero__badge {
+      position: absolute;
+      top: 14px;
+      right: var(--space-lg);
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: .05em;
+      padding: 5px 9px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .hero__caption {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: var(--space-lg);
+      right: var(--space-lg);
+    }
+    .hero__promo-tag {
+      display: inline-block;
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-weight: 800;
+      font-size: 10px;
+      letter-spacing: .05em;
+      padding: 4px 9px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      color: var(--color-white);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    /* ---- Tabs tipo pill ---- */
+    .tabs {
+      display: flex;
+      gap: var(--space-sm);
+      padding: 14px var(--space-lg) 10px;
+      overflow-x: auto;
+    }
+    .tab {
+      background: var(--color-surface);
+      color: #aaa;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: background .15s ease, color .15s ease;
+    }
+    .tab.is-active {
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-weight: 800;
+    }
+
+    /* ---- Aviso de oferta ---- */
+    .offer {
+      background: var(--color-bg-card);
+      border: 1px solid #2a2a2a;
+      border-radius: var(--radius-md);
+      margin: 2px var(--space-lg) var(--space-md);
+      padding: 10px var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .offer__tag {
+      background: #2a2a2a;
+      color: var(--color-accent);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: .05em;
+      padding: 3px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      border: 1px solid var(--color-accent);
+    }
+    .offer__text {
+      color: var(--color-text);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ---- Grid de productos (bento 2 columnas) ---- */
+    .products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 4px var(--space-lg) 100px;
+      flex: 1;
+    }
+    .product {
+      background: var(--color-bg-elevated);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .product__img {
+      width: 100%;
+      height: 96px;
+      object-fit: cover;
+    }
+    .product__body {
+      padding: 9px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .product__name {
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: 12.5px;
+      line-height: 1.2;
+    }
+    .product__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .product__price {
+      color: var(--color-accent);
+      font-family: var(--font-display);
+      font-size: 16px;
+    }
+    .product__add {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .products__empty {
+      grid-column: 1 / -1;
+      color: var(--color-text-muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    /* ---- Botón flotante de WhatsApp ---- */
+    .fab {
+      position: sticky;
+      bottom: var(--space-lg);
+      display: flex;
+      justify-content: flex-end;
+      padding-right: var(--space-lg);
+      z-index: 6;
+    }
+    .fab__btn {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(230, 50, 50, .5);
+      font-size: 26px;
+      text-decoration: none;
+    }
+
+    /* ---- Footer con QR ---- */
+    .footer {
+      padding: var(--space-lg);
+      border-top: 1px solid var(--color-border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .footer__text {
+      color: var(--color-text-muted);
+      font-size: 10.5px;
+      font-weight: 500;
+      max-width: 230px;
+      line-height: 1.4;
+    }
+    .footer__qr {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+
+    <!-- Hero con imagen, logo y badge "Abierto" -->
+    <header class="hero">
+      <img class="hero__img" src="https://placehold.co/440x210/1a1a1a/E63232?text=Promo" alt="Promoción de la semana">
+      <div class="hero__overlay"></div>
+      <div class="hero__brand">
+        <div class="hero__logo">LE</div>
+        <div class="hero__name">LA ESQUINA 24H</div>
+      </div>
+      <div class="hero__badge">● Abierto</div>
+      <div class="hero__caption">
+        <div class="hero__promo-tag">Promo de la semana</div>
+        <div class="hero__title">COMBO MEDIANOCHE $99</div>
+      </div>
+    </header>
+
+    <!-- Tabs de categorías (pill) -->
+    <nav class="tabs" id="tabs">
+      <button class="tab is-active" data-category="comida-rapida">Comida Rápida</button>
+      <button class="tab" data-category="desayunos">Desayunos</button>
+      <button class="tab" data-category="almuerzos">Almuerzos</button>
+      <button class="tab" data-category="promociones">Promociones</button>
+    </nav>
+
+    <!-- Aviso de oferta -->
+    <div class="offer">
+      <div class="offer__tag">Oferta</div>
+      <div class="offer__text">2x1 en Hot Dogs, martes y jueves después de las 10pm</div>
+    </div>
+
+    <!-- Grid de productos (se rellena con JS) -->
+    <main class="products" id="products"></main>
+
+    <!-- Botón flotante de WhatsApp -->
+    <div class="fab">
+      <a class="fab__btn" href="#" aria-label="Pedir por WhatsApp">☏</a>
+    </div>
+
+    <!-- Footer con QR -->
+    <footer class="footer">
+      <div class="footer__text">Escanea para ver el menú de tu mesa</div>
+      <img class="footer__qr" src="https://placehold.co/52x52/F5F1EA/121212?text=QR" alt="Código QR del menú">
+    </footer>
+
+  </div>
+
+  <!-- Datos del menú compartidos entre todas las variaciones -->
+  <script src="../js/menu-data.js"></script>
+  <script>
+    // El array de productos vive en ../js/menu-data.js (window.MENU) y es
+    // compartido por 1a, 1b y 1c. Aquí solo cambia el markup (tarjetas bento).
+    const productsEl = document.getElementById('products');
+    const tabsEl = document.getElementById('tabs');
+
+    // Renderiza las tarjetas de producto de una categoría en grid
+    function renderProducts(category) {
+      const items = MENU[category] || [];
+      if (items.length === 0) {
+        productsEl.innerHTML = '<div class="products__empty">Próximamente…</div>';
+        return;
+      }
+      productsEl.innerHTML = items.map(function (p) {
+        return (
+          '<article class="product">' +
+            '<img class="product__img" src="' + p.img + '" alt="' + p.name + '">' +
+            '<div class="product__body">' +
+              '<div class="product__name">' + p.name + '</div>' +
+              '<div class="product__row">' +
+                '<div class="product__price">' + p.price + '</div>' +
+                '<button class="product__add" aria-label="Agregar ' + p.name + '">+</button>' +
+              '</div>' +
+            '</div>' +
+          '</article>'
+        );
+      }).join('');
+    }
+
+    // Cambio de categoría al hacer click en una tab
+    tabsEl.addEventListener('click', function (e) {
+      const tab = e.target.closest('.tab');
+      if (!tab) return;
+      tabsEl.querySelectorAll('.tab').forEach(function (t) {
+        t.classList.remove('is-active');
+      });
+      tab.classList.add('is-active');
+      renderProducts(tab.dataset.category);
+    });
+
+    // Estado inicial: Comida Rápida
+    renderProducts('comida-rapida');
+  </script>
+</body>
+</html>
