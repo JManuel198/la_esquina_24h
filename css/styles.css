@@ -1,0 +1,77 @@
+/* ============================================================
+   La Esquina 24H — Variables de diseño compartidas
+   Paleta oscura con acento rojo. Tipografías Anton + Inter.
+   Reutilizable por todas las variaciones (1a, 1b, 1c...).
+   ============================================================ */
+
+:root {
+  /* Colores */
+  --color-bg:            #121212;
+  --color-bg-elevated:   #1a1a1a;
+  --color-bg-card:       #1b1b1b;
+  --color-surface:       #1e1e1e;
+  --color-border:        #262626;
+  --color-border-soft:   #232323;
+  --color-accent:        #E63232;
+  --color-accent-shadow: rgba(230, 50, 50, .4);
+  --color-text:          #F5F1EA;
+  --color-text-muted:    #8a8a8a;
+  --color-text-tab:      #7a7a7a;
+  --color-white:         #ffffff;
+
+  /* Tipografía */
+  --font-display: 'Anton', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  /* Espaciados */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 28px;
+
+  /* Radios */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 50%;
+
+  /* Sombras */
+  --shadow-btn: 0 8px 24px var(--color-accent-shadow);
+
+  /* Layout */
+  --page-max-width: 440px;
+}
+
+/* ============================================================
+   Reset ligero
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0a0a0a;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}

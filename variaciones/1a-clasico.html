@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La Esquina 24H — Menú (1a Clásico)</title>
+
+  <!-- Tipografías: Anton para títulos, Inter para el resto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Variables de diseño compartidas -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* ====== Layout de la variación 1a (Clásico) ====== */
+
+    body {
+      display: flex;
+      justify-content: center;
+      background: #0a0a0a;
+    }
+
+    .app {
+      width: 100%;
+      max-width: var(--page-max-width);
+      min-height: 100vh;
+      background: var(--color-bg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-xl) 18px var(--space-md);
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      z-index: 5;
+    }
+    .header__logo {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      color: var(--color-white);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .header__name {
+      font-family: var(--font-display);
+      color: var(--color-text);
+      font-size: 22px;
+      letter-spacing: .01em;
+      line-height: 1;
+    }
+    .header__tagline {
+      color: var(--color-text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    /* ---- Banner de promoción ---- */
+    .promo {
+      margin: var(--space-sm) var(--space-lg) var(--space-xs);
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 150px;
+    }
+    .promo__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .promo__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.85) 10%, rgba(0,0,0,.15) 70%);
+      pointer-events: none;
+    }
+    .promo__badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-weight: 800;
+      font-size: 10px;
+      letter-spacing: .05em;
+      padding: 4px 9px;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
+    .promo__caption {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+    }
+    .promo__title {
+      font-family: var(--font-display);
+      color: var(--color-white);
+      font-size: 24px;
+      line-height: 1;
+    }
+    .promo__subtitle {
+      color: #d9d9d9;
+      font-size: 11px;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    /* ---- Aviso de oferta secundaria ---- */
+    .offer {
+      margin: 6px var(--space-lg) 10px;
+      background: var(--color-bg-card);
+      border: 1px solid #2a2a2a;
+      border-radius: var(--radius-md);
+      padding: 10px var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .offer__tag {
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: .05em;
+      padding: 3px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .offer__text {
+      color: var(--color-text);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ---- Tabs de categorías ---- */
+    .tabs {
+      display: flex;
+      gap: 22px;
+      padding: 6px 18px 0;
+      border-bottom: 1px solid var(--color-border-soft);
+      overflow-x: auto;
+    }
+    .tab {
+      color: var(--color-text-tab);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 0 0 14px;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+      transition: color .15s ease;
+    }
+    .tab.is-active {
+      color: var(--color-text);
+      font-weight: 800;
+      border-bottom-color: var(--color-accent);
+    }
+
+    /* ---- Lista de productos ---- */
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding: var(--space-lg) var(--space-lg) 120px;
+      flex: 1;
+    }
+    .product {
+      display: flex;
+      gap: var(--space-md);
+      background: var(--color-bg-elevated);
+      border-radius: 14px;
+      padding: 10px;
+      align-items: center;
+    }
+    .product__img {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .product__info {
+      flex: 1;
+      min-width: 0;
+    }
+    .product__name {
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .product__price {
+      color: var(--color-accent);
+      font-family: var(--font-display);
+      font-size: 17px;
+      margin-top: 4px;
+    }
+    .product__add {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .products__empty {
+      color: var(--color-text-muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    /* ---- Botón fijo de WhatsApp ---- */
+    .whatsapp-bar {
+      position: sticky;
+      bottom: 0;
+      padding: 14px var(--space-lg);
+      background: linear-gradient(0deg, var(--color-bg) 60%, transparent);
+      z-index: 6;
+    }
+    .whatsapp-btn {
+      display: block;
+      width: 100%;
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-weight: 800;
+      font-size: 15px;
+      text-align: center;
+      padding: 14px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-btn);
+      text-decoration: none;
+    }
+
+    /* ---- Footer con QR ---- */
+    .footer {
+      padding: var(--space-xl) 18px var(--space-2xl);
+      border-top: 1px solid var(--color-border-soft);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .footer__qr {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .footer__text {
+      color: var(--color-text-muted);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__logo">LE</div>
+      <div>
+        <div class="header__name">LA ESQUINA 24H</div>
+        <div class="header__tagline">Abierto hasta el amanecer</div>
+      </div>
+    </header>
+
+    <!-- Banner de promoción -->
+    <div class="promo">
+      <img class="promo__img" src="https://placehold.co/440x150/1a1a1a/E63232?text=Promo" alt="Promoción de la semana">
+      <div class="promo__overlay"></div>
+      <div class="promo__badge">Promo de la semana</div>
+      <div class="promo__caption">
+        <div class="promo__title">2X1 EN HOT DOGS</div>
+        <div class="promo__subtitle">Martes y jueves después de las 10pm</div>
+      </div>
+    </div>
+
+    <!-- Aviso de oferta secundaria -->
+    <div class="offer">
+      <div class="offer__tag">Oferta</div>
+      <div class="offer__text">Combo Medianoche: burger + papas + refresco por $99</div>
+    </div>
+
+    <!-- Tabs de categorías -->
+    <nav class="tabs" id="tabs">
+      <button class="tab" data-category="desayunos">Desayunos</button>
+      <button class="tab" data-category="almuerzos">Almuerzos</button>
+      <button class="tab is-active" data-category="comida-rapida">Comida Rápida</button>
+      <button class="tab" data-category="promociones">Promociones</button>
+    </nav>
+
+    <!-- Lista de productos (se rellena con JS) -->
+    <main class="products" id="products"></main>
+
+    <!-- Botón fijo de WhatsApp -->
+    <div class="whatsapp-bar">
+      <a class="whatsapp-btn" href="#">Pedir por WhatsApp</a>
+    </div>
+
+    <!-- Footer con QR -->
+    <footer class="footer">
+      <img class="footer__qr" src="https://placehold.co/64x64/F5F1EA/121212?text=QR" alt="Código QR del menú">
+      <div class="footer__text">Escanea el código QR de tu mesa para ver este menú desde tu celular.</div>
+    </footer>
+
+  </div>
+
+  <script>
+    // ====== Datos de ejemplo ======
+    // "Comida Rápida" usa los mismos productos y precios del mockup.
+    // Las demás categorías traen ejemplos para que las tabs cambien de contenido.
+    const MENU = {
+      'desayunos': [
+        { name: 'Chilaquiles Verdes',   price: '$65', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=1' },
+        { name: 'Huevos al Gusto',       price: '$50', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=2' },
+        { name: 'Molletes con Frijol',   price: '$45', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=3' },
+      ],
+      'almuerzos': [
+        { name: 'Milanesa con Arroz',    price: '$80', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=1' },
+        { name: 'Enchiladas Rojas',      price: '$75', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=2' },
+        { name: 'Torta de Bistec',       price: '$60', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=3' },
+      ],
+      'comida-rapida': [
+        { name: 'Doble Carne Especial',    price: '$85', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=1' },
+        { name: 'Papas con Queso y Tocino', price: '$55', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=2' },
+        { name: 'Hot Dog Callejero',       price: '$45', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=3' },
+        { name: 'Alitas BBQ x8',           price: '$95', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=4' },
+        { name: 'Quesadilla Frita',        price: '$60', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=5' },
+        { name: 'Trompo al Pastor',        price: '$50', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=6' },
+      ],
+      'promociones': [
+        { name: 'Combo Medianoche',      price: '$99', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=1' },
+        { name: '2x1 en Hot Dogs',       price: '$45', img: 'https://placehold.co/72x72/1a1a1a/E63232?text=2' },
+      ],
+    };
+
+    const productsEl = document.getElementById('products');
+    const tabsEl = document.getElementById('tabs');
+
+    // Renderiza las tarjetas de producto de una categoría
+    function renderProducts(category) {
+      const items = MENU[category] || [];
+      if (items.length === 0) {
+        productsEl.innerHTML = '<div class="products__empty">Próximamente…</div>';
+        return;
+      }
+      productsEl.innerHTML = items.map(function (p) {
+        return (
+          '<article class="product">' +
+            '<img class="product__img" src="' + p.img + '" alt="' + p.name + '">' +
+            '<div class="product__info">' +
+              '<div class="product__name">' + p.name + '</div>' +
+              '<div class="product__price">' + p.price + '</div>' +
+            '</div>' +
+            '<button class="product__add" aria-label="Agregar ' + p.name + '">+</button>' +
+          '</article>'
+        );
+      }).join('');
+    }
+
+    // Cambio de categoría al hacer click en una tab
+    tabsEl.addEventListener('click', function (e) {
+      const tab = e.target.closest('.tab');
+      if (!tab) return;
+      tabsEl.querySelectorAll('.tab').forEach(function (t) {
+        t.classList.remove('is-active');
+      });
+      tab.classList.add('is-active');
+      renderProducts(tab.dataset.category);
+    });
+
+    // Estado inicial: Comida Rápida
+    renderProducts('comida-rapida');
+  </script>
+</body>
+</html>
